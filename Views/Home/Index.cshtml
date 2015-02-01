@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+
+    <fieldset style="width:300px;">
+        <legend>FontWarpFactor</legend>
+        <label>
+            <input type="radio" name="group1" value="Low" />
+            Low
+        </label>
+        <label>
+            <input type="radio" name="group1" value="Medium" />
+            Medium
+        </label>
+        <label>
+            <input type="radio" name="group1" value="High" />
+            High
+        </label>
+        <label>
+            <input type="radio" name="group1" value="Extreme" />
+            Extreme
+        </label>
+
+    </fieldset>
+
+    <fieldset style="width:300px;">
+        <legend>BackgroundNoiseLevel</legend>
+        <label>
+            <input type="radio" name="group2" value="Low" />
+            Low
+        </label>
+        <label>
+            <input type="radio" name="group2" value="Medium" />
+            Medium
+        </label>
+        <label>
+            <input type="radio" name="group2" value="High" />
+            High
+        </label>
+        <label>
+            <input type="radio" name="group2" value="Extreme" />
+            Extreme
+        </label>
+    </fieldset>
+
+    <fieldset style="width:300px;">
+        <legend>LineNoiseLevel</legend>
+        <label>
+            <input type="radio" name="group3" value="Low" />
+            Low
+        </label>
+        <label>
+            <input type="radio" name="group3" value="Medium" />
+            Medium
+        </label>
+        <label>
+            <input type="radio" name="group3" value="High" />
+            High
+        </label>
+        <label>
+            <input type="radio" name="group3" value="Extreme" />
+            Extreme
+        </label>
+    </fieldset>
+
+    <br />
+    <div>
+        <input type="button" id="btn_send" name="btn_send" value="test" />
+    </div>
+    <br />
+    <br />
+    <div id="img"></div>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#btn_send").on('click', function (e) {
+
+            var fwf = $("input[name='group1']:checked").val() || '';
+            var bgnoise = $("input[name='group2']:checked").val() || '';
+            var linenoise = $("input[name='group3']:checked").val() || '';
+            //var imgUrl = $.format('Handler.ashx?fwf={0}&bgnoise={1}&linenoise={2}&ds={3}', fwf, bgnoise, linenoise, Date.now());
+            var imgUrl = $.format('Index2?fwf={0}&bgnoise={1}&linenoise={2}&time={3}', fwf, bgnoise, linenoise, Date.now());
+            $("#img").empty().html('<img src=' + imgUrl + '></img>');
+        });
+
+    });
+
+
+    $.format = function () {
+        if (!!!arguments.length) {
+            return '';
+        }
+        var a = arguments;
+        if (typeof arguments[0] == 'object') {
+            a = arguments[0];
+        }
+
+        for (var c = a[0], b = 1; b < a.length; b++) {
+            c = c.replace(new RegExp('\\{' + (b - 1) + '\\}', 'gm'), a[b]);
+        }
+        return c;
+    };
+
+</script>
+
