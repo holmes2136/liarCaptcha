@@ -87,7 +87,7 @@
             var bgnoise = $("input[name='group2']:checked").val() || '';
             var linenoise = $("input[name='group3']:checked").val() || '';
             //var imgUrl = $.format('Handler.ashx?fwf={0}&bgnoise={1}&linenoise={2}&ds={3}', fwf, bgnoise, linenoise, Date.now());
-            var imgUrl = $.format('Index2?fwf={0}&bgnoise={1}&linenoise={2}&time={3}', fwf, bgnoise, linenoise, Date.now());
+            var imgUrl = $.format('Home/Index2?fwf={0}&bgnoise={1}&linenoise={2}&time={3}', fwf, bgnoise, linenoise, Date.now());
             $("#img").empty().html('<img src=' + imgUrl + '></img>');
         });
 
